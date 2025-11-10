@@ -586,32 +586,54 @@ def run_full_evaluation():
     ║ MAP:             0.8600                         ║
     ╚════════════════════════════════===============══╝
     """)
-Comparison with Baselines
-MethodAccuracyNDCG@10MAPTraining TimeveRL (Our Model)87.0%0.890.86110 minSupervised Learning82.5%0.840.8145 minCollaborative Filter78.3%0.790.7630 minContent-Based75.8%0.760.7320 minRandom50.0%0.500.50-
+**Comparison with Baselines**
+===================================================================
+| Method               | Accuracy | NDCG@10 | MAP | Training Time |
+===================================================================
+| veRL (Our Model)     | 87.0%    | 0.89    | 0.86| 110 min       |
+===================================================================
+| Supervised Learning  | 82.5%    | 0.84    | 0.81| 45 min        |
+===================================================================
+| Collaborative Filter | 78.3%    | 0.79    | 0.76| 30 min        |
+===================================================================
+| Content-Based        | 75.8%    | 0.76    | 0.73| 20 min        |
+===================================================================
+| Random               | 50.0%    | 0.50    | 0.50| -             |
+===================================================================
+```
 ###########################################################################################################
 
 # 🚀 Installation & Usage
 Quick Start
-bash# 1. Clone repository
+
+bash
+# 1. Clone repository
+```
 git clone https://github.com/your-org/verl-paper-recommender.git
 cd verl-paper-recommender
-
+```
 # 2. Install dependencies
+```
 pip install -r requirements.txt
-
+```
 # 3. Prepare dataset
+```
 python generate_dataset.py
-
+```
 # 4. Pre-train reward model
+```
 python pretrain_reward.py
-
+```
 # 5. Train with PPO
+```
 python train_recommender.py
-
+```
 # 6. Evaluate
+```
 python evaluate.py
-
+```
 # 7. Run inference
+```
   python inference.py --query "papers about transformers in NLP"
   Requirements
   txttorch>=2.0.0
@@ -625,14 +647,15 @@ python evaluate.py
   tqdm>=4.65.0
   Inference Example
   pythonfrom train_recommender import PPOTrainer, RecommendationConfig
-
+```
 # Load trained model
+```
   config = RecommendationConfig()
   trainer = PPOTrainer(config)
   trainer.policy_model.load_pretrained("./verl_recommender_model/policy")
-
+```
 # Make recommendation
-
+```
   query = "I need papers about graph neural networks for molecular property prediction"
   
   papers = load_candidate_papers()
@@ -650,12 +673,12 @@ python evaluate.py
       is_relevant = trainer.predict(prompt)
       if is_relevant:
           recommendations.append(paper)
-
+```
 # Display top 10
-
+```
   for i, paper in enumerate(recommendations[:10], 1):
       print(f"{i}. {paper['title']}")
-
+```
 ## 📊 Results Summary
 **Key Achievements**
 - ✅ 87% accuracy on test set
