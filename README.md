@@ -609,8 +609,9 @@ Quick Start
 bash
 # 1. Clone repository
 ```
-git clone https://github.com/your-org/verl-paper-recommender.git
-cd verl-paper-recommender
+git clone https://github.com/Prasad-Krishna-Murthy/Reinforcement-Learning-Project-using-verl-for-research-paper.git
+
+cd Reinforcement-Learning-Project-using-verl-for-research-paper
 ```
 # 2. Install dependencies
 ```
